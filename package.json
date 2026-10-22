@@ -1,0 +1,23 @@
+{
+  "name": "vdo-ninja-ndi",
+  "version": "1.0.0",
+  "description": "VDO.Ninja NDI Electron App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafihadi04/vdo.ninjaNDI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron/rebuild": "^4.2.1",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "grandiose": "^0.0.4"
+  }
+}

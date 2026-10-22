@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>VDO.Ninja NDI Client</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white h-screen flex">
+  <!-- Sidebar for Controls -->
+  <div class="w-1/3 p-6 bg-gray-800 flex flex-col gap-4 border-r border-gray-700 overflow-y-auto">
+    <h2 class="text-2xl font-bold text-center mb-4">Settings</h2>
+
+    <!-- Mode Selector -->
+    <div>
+      <label class="block text-sm font-medium mb-1">Mode</label>
+      <select id="modeSelect" class="w-full bg-gray-700 rounded p-2 text-white outline-none border border-gray-600 focus:border-blue-500">
+        <option value="push">Push (Broadcast to VDO.Ninja)</option>
+        <option value="view">View (Receive from VDO.Ninja)</option>
+      </select>
+    </div>
+
+    <!-- Stream Key -->
+    <div>
+      <label class="block text-sm font-medium mb-1">Stream Key</label>
+      <div class="flex gap-2">
+        <input type="text" id="streamKey" placeholder="Enter room or stream key" class="w-full bg-gray-700 rounded p-2 text-white outline-none border border-gray-600 focus:border-blue-500">
+        <button id="genKeyBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Random
+        </button>
+      </div>
+    </div>
+
+    <!-- NDI Source (Only for Push Mode) -->
+    <div id="ndiSourceContainer">
+      <label class="block text-sm font-medium mb-1">NDI Source (Input)</label>
+      <div class="flex gap-2">
+        <select id="ndiSourceSelect" class="w-full bg-gray-700 rounded p-2 text-white outline-none border border-gray-600 focus:border-blue-500">
+          <option value="">Select NDI Source...</option>
+        </select>
+        <button id="refreshNdiBtn" class="bg-gray-600 hover:bg-gray-500 text-white p-2 rounded" title="Refresh">
+          ↻
+        </button>
+      </div>
+    </div>
+
+    <!-- Resolution Selector -->
+    <div>
+      <label class="block text-sm font-medium mb-1">Resolution</label>
+      <select id="resSelect" class="w-full bg-gray-700 rounded p-2 text-white outline-none border border-gray-600 focus:border-blue-500">
+        <option value="640,360">360p</option>
+        <option value="1280,720" selected>720p</option>
+        <option value="1920,1080">1080p</option>
+        <option value="3840,2160">4K</option>
+      </select>
+    </div>
+
+    <!-- Latency / Buffer -->
+    <div>
+      <label class="block text-sm font-medium mb-1">Latency Buffer (ms): <span id="bufferValue">0</span></label>
+      <input type="range" id="bufferSlider" min="0" max="2000" step="50" value="0" class="w-full">
+    </div>
+
+    <hr class="border-gray-600 my-2">
+
+    <!-- Action Button -->
+    <button id="startBtn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded text-lg">
+      Start Stream
+    </button>
+  </div>
+
+  <!-- Main View Area (Will be covered by BrowserView or used for preview) -->
+  <div class="flex-1 flex flex-col justify-center items-center relative" id="previewContainer">
+    <p class="text-gray-400 text-lg">VDO.Ninja Preview</p>
+  </div>
+
+  <script src="./renderer.js"></script>
+</body>
+</html>
