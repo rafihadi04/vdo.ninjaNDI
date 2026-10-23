@@ -24,6 +24,7 @@ filesToPatch.forEach(file => {
 
     // Fix C++ const char* conversion errors in newer Visual Studio compilers
     content = content.replace(/char\*\s+file/g, 'const char* file');
+    content = content.replace(/char\*\s+resourceName/g, 'const char* resourceName');
 
     // Fix missing itoa function in some C++ standard libraries
     content = content.replace(/itoa\(errorInfo->error_code,\s*errorCode,\s*10\)/g, '(sprintf(errorCode, "%d", errorInfo->error_code), errorCode)');
