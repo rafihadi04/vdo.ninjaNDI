@@ -31,6 +31,15 @@ function createWindow() {
     }
   });
 
+  // Handle resize dynamically
+  mainWindow.on('resize', () => {
+    if (view && mainWindow.getBrowserViews().includes(view)) {
+      const b = mainWindow.getBounds();
+      const sw = Math.floor(b.width / 3);
+      view.setBounds({ x: sw, y: 0, width: b.width - sw, height: b.height });
+    }
+  });
+
   // Initially do not attach or display the view until Start Stream is clicked
 }
 
@@ -71,13 +80,6 @@ ipcMain.on('start-stream', (event, config) => {
 
   mainWindow.setBrowserView(view);
   view.setBounds({ x: sidebarWidth, y: 0, width: bounds.width - sidebarWidth, height: bounds.height });
-
-  // Handle resize dynamically
-  mainWindow.on('resize', () => {
-    const b = mainWindow.getBounds();
-    const sw = Math.floor(b.width / 3);
-    if(view) view.setBounds({ x: sw, y: 0, width: b.width - sw, height: b.height });
-  });
 
   // Construct URL
   let vdoUrl = `https://vdo.ninja/`;

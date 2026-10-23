@@ -10,11 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/rafihadi04/vdo.ninjaNDI.git"
   },
-  "author": "",
+  "author": "VDO.Ninja NDI Dev",
   "license": "ISC",
   "devDependencies": {
     "@electron/rebuild": "^4.2.1",
-    "electron": "^45.0.0",
+    "electron": "^32.0.0",
     "electron-builder": "^26.15.3"
   },
   "dependencies": {
